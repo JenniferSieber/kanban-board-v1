@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Task } from "../utils/data-tasks";
 import {
   lowPriorityIcon,
@@ -7,28 +8,41 @@ import {
 
 const TaskCard = ({
   task,
-  updateTaskPoints,
+  updateTask,
 }: {
   task: Task;
-  updateTaskPoints: (task: Task, points: number) => void;
+  updateTask: (task: Task) => void;
 }) => {
+  const [isEditingTitle, setIsEditingTitle] = useState(false);
   const points = task.points || 0;
+
   const updatePoints = (direction: "up" | "down") => {
     const fib = [0, 1, 2, 3, 5, 8, 13];
     const index = fib.indexOf(points);
     const nextIndex = direction === "up" ? index + 1 : index - 1;
     const newPoints = fib[nextIndex];
     if (newPoints) {
-      updateTaskPoints(task, newPoints);
+      updateTask({ ...task, points: newPoints });
     }
-    updateTaskPoints(task, points);
   };
 
   return (
     <div className="border rounded-lg px-2 m-2 bg-gray-50 w-60">
       <div className="text-base font-semibold text-gray-700 py-2 text-center">
-        {task.title}
+        {isEditingTitle ? (
+          <input
+            type="text"
+            autoFocus
+            className="w-full"
+            onBlur={() => setIsEditingTitle(false)}
+            value={task.title}
+            onChange={(e) => updateTask({ ...task, title: e.target.value })}
+          />
+        ) : (
+          <div onClick={() => setIsEditingTitle(true)}>{task.title}</div>
+        )}
       </div>
+
       <div className="flex text-sm justify-between py-2">
         <div className="flex gap-2">
           <span>{task.id}</span>
