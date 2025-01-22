@@ -19,7 +19,7 @@ function App() {
       <div className="flex divide-x">
         {columns.map((column) => (
           <div>
-            <h2 className="text-3xl p-2 capitalize text-center text-blue-600 font-bold">      
+            <h2 className="text-3xl p-2 capitalize text-center text-blue-900 font-bold">      
               {column.title}
             </h2>
             {column.tasks.map((task) => (
