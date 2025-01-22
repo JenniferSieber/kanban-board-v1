@@ -1,5 +1,6 @@
 // import from App the Type definitions for Task
-import { Task } from "../data-tasks"
+import { Task } from "../utils/data-tasks"
+
 
 // updated the task prop to look at task: Task
 const TaskCard = ({task}: {
