@@ -23,7 +23,7 @@ export const tasks: Task[] = [
     id: "BUS-1",
     status: "todo",
     priority: "medium",
-    points: 5,
+    points: 1,
   },
   {
     title: "Task 2 Example",
@@ -44,7 +44,7 @@ export const tasks: Task[] = [
     id: "BUS-4",
     status: "todo",
     priority: "high",
-    points: 20,
+    points: 0,
   },
   {
     title: "Task 5 Example",
