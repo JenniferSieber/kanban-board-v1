@@ -19,7 +19,7 @@ const TaskCard = ({
 
   // Update Points with Fib 0 - 13 non repeat
   const updatePoints = (direction: "up" | "down") => {
-    const fib = [-1, 0, 1, 2, 3, 5, 8, 13];
+    const fib = [0, 1, 2, 3, 5, 8, 13];
     const index = fib.indexOf(points);
     const nextIndex = direction === "up" ? index + 1 : index - 1;
     const newPoints = fib[nextIndex];
