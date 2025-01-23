@@ -1,19 +1,19 @@
+// Define types for Status, Priority & Task
 export type Status = "todo" | "in-progress" | "done"
 export type Priority = "low" | "medium" | "high"
-
 export type Task = {
   title: string;
   id: string;
   status: Status,
   priority: Priority,
-  points?: number;
+  points?: number; // not required
 };
 
-// Create a Statuses Array to Loop through
+// Define statuses & priorities
 export const statuses: Status[] = ['todo', 'in-progress', 'done']
 export const priorities: Priority[] = ['low', 'medium', 'high']
 
-// Add Status to define column for the task
+// Tasks - TODO: change to db.json
 export const tasks: Task[] = [
   {
     title: "Task 1 Example",
@@ -27,14 +27,14 @@ export const tasks: Task[] = [
     id: "BUS-2",
     status: "done",
     priority: "low",
-    points: 10,
+    points: 4,
   },
   {
     title: "Task 3 Example",
     id: "BUS-3",
     status: "in-progress",
     priority: "high",
-    points: 15,
+    points: 10,
   },
   {
     title: "Task 4 Example",
@@ -55,7 +55,6 @@ export const tasks: Task[] = [
     id: "BUS-6",
     status: "done",
     priority: "high",
-    points: 6,
   },
   {
     title: "Task 7 Example",
@@ -69,6 +68,5 @@ export const tasks: Task[] = [
     id: "BUS-8",
     status: "todo",
     priority: "low",
-    points: 8,
   },
 ];

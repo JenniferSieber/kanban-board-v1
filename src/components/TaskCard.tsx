@@ -17,7 +17,7 @@ const TaskCard = ({
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const points = task.points || 0;
 
-  // Update Points with Fib 0 - 13
+  // Update Points with Fib 0 - 13 non repeat
   const updatePoints = (direction: "up" | "down") => {
     const fib = [0, 1, 2, 3, 5, 8, 13];
     const index = fib.indexOf(points);
@@ -27,6 +27,12 @@ const TaskCard = ({
       updateTask({ ...task, points: newPoints });
     }
   };
+
+    // Handle Priority Change
+    const handlePriorityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const newPriority = e.target.value as "low" | "medium" | "high";
+      updateTask({ ...task, priority: newPriority });
+    };
 
   return (
     <div
@@ -54,6 +60,15 @@ const TaskCard = ({
       <div className="flex text-sm justify-between py-2 text-gray-500">
         <div className="flex gap-2">
           <span className="uppercase">{task.id}</span>
+          <select
+            value={task.priority}
+            onChange={handlePriorityChange}
+            className="border rounded px-1 text-gray-700"
+          >
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
           {task.priority === "high" && <span>{highPriorityIcon}</span>}
           {task.priority === "medium" && <span>{mediumPriorityIcon}</span>}
           {task.priority === "low" && <span>{lowPriorityIcon}</span>}
