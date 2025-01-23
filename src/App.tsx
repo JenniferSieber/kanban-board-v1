@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import TaskCard from "./components/TaskCard";
 import {
   Status,
@@ -9,10 +8,12 @@ import {
 } from "./utils/data-tasks";
 
 function App() {
+  // State
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [currentlyHoveringOver, setCurrentlyHoveringOver] =
     useState<Status | null>(null);
 
+  // Define Columns
   const columns = statuses.map((status) => {
     const tasksInColumn = tasks.filter((task) => task.status === status);
     return {
@@ -21,6 +22,7 @@ function App() {
     };
   });
 
+  // Update Task Function within the Card Component
   const updateTask = (task: Task) => {
     const updatedTasks = tasks.map((t) => {
       return t.id === task.id ? task : t;
@@ -28,6 +30,7 @@ function App() {
     setTasks(updatedTasks);
   };
 
+  // Drag Event Function handleDrop
   const handleDrop = (e: React.DragEvent<HTMLDivElement>, status: Status) => {
     e.preventDefault();
     setCurrentlyHoveringOver(null);
@@ -38,6 +41,7 @@ function App() {
     }
   };
 
+  // Drag Event Function handleDragEnter
   const handleDragEnter = (status: Status) => {
     setCurrentlyHoveringOver(status);
   };
@@ -52,7 +56,7 @@ function App() {
             onDragOver={(e) => e.preventDefault()}
             onDragEnter={() => handleDragEnter(column.status)}
           >
-            <div className="flex justify-between text-3xl p-2 font-bold  text-blue-900">
+            <div className="w-30 gap-10 flex justify-between text-3xl p-2 font-bold  text-blue-900">
               <h2 className="capitalize">{column.status}</h2>
               {column.tasks.reduce(
                 (total, task) => total + (task?.points || 0),
@@ -60,9 +64,15 @@ function App() {
               )}
             </div>
 
-            {column.tasks.map((task) => (
-              <TaskCard key={task.id} task={task} updateTask={updateTask} />
-            ))}
+            <div
+              className={`h-full ${
+                currentlyHoveringOver === column.status ? "bg-gray-200" : ""
+              }`}
+            >
+              {column.tasks.map((task) => (
+                <TaskCard key={task.id} task={task} updateTask={updateTask} />
+              ))}
+            </div>
           </div>
         ))}
       </div>
