@@ -2,8 +2,8 @@
   "tasks": [
     {
       "id": "BUS-1",
-      "title": "Market research",
-      "status": "todo",
+      "title": "FIRST TASK: Market research",
+      "status": "done",
       "priority": "low",
       "points": 1
     },
@@ -18,7 +18,7 @@
       "title": "Develop business strategy",
       "status": "todo",
       "priority": "high",
-      "points": 8
+      "points": 13
     },
     {
       "id": "BUS-4",
@@ -53,7 +53,7 @@
       "title": "Evaluate business performance",
       "status": "done",
       "priority": "medium",
-      "points": 3
+      "points": 1
     }
   ]
 }
