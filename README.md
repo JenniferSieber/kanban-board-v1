@@ -1,11 +1,8 @@
-# React + TypeScript + Vite
+## React + TypeScript + Vite + TailwindCSS 
+# Kanban Board v1
+- Kanban Board with updates to priority, points and title of each task. Draggable feature updates the status of the card based on column dragged. 
+- using json-server to for effective database testing with db.json
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## Expanding the ESLint configuration
 
