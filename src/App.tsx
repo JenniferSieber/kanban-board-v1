@@ -1,15 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskCard from "./components/TaskCard";
-import {
-  Status,
-  tasks as initialTasks,
-  statuses,
-  Task,
-} from "./utils/data-tasks";
+import { Status, statuses, Task } from "./utils/data-tasks";
+const API_URL = import.meta.env.VITE_API_URL;
+
+
+
 
 function App() {
   // State
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [currentlyHoveringOver, setCurrentlyHoveringOver] =
     useState<Status | null>(null);
 
@@ -22,8 +21,25 @@ function App() {
     };
   });
 
+  // Get Tasks from db on Mount
+  useEffect(() => {
+    fetch(`${API_URL}/tasks`)
+      .then((res) => res.json())
+      .then((data) => {
+        setTasks(data);
+      });
+  }, []);
+
   // Update Task Function within the Card Component
   const updateTask = (task: Task) => {
+    // Get task from db for PUT request
+    fetch(`${API_URL}/tasks/${task.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(task),
+    });
     const updatedTasks = tasks.map((t) => {
       return t.id === task.id ? task : t;
     });

@@ -63,11 +63,11 @@ const TaskCard = ({
           <select
             value={task.priority}
             onChange={handlePriorityChange}
-            className="border rounded px-1 text-gray-700"
+            className="border rounded px-1 text-gray-700 w-22 hover:border-slate-700"
           >
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+            <option className="bg-slate-200" value="low">Low</option>
+            <option className="bg-slate-200" value="medium">Medium</option>
+            <option className="bg-slate-200" value="high">High</option>
           </select>
           {task.priority === "high" && <span>{highPriorityIcon}</span>}
           {task.priority === "medium" && <span>{mediumPriorityIcon}</span>}
