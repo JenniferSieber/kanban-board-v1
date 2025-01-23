@@ -1,6 +1,4 @@
-// Create type for Status
 export type Status = "todo" | "in-progress" | "done"
-
 export type Priority = "low" | "medium" | "high"
 
 export type Task = {
@@ -14,7 +12,6 @@ export type Task = {
 // Create a Statuses Array to Loop through
 export const statuses: Status[] = ['todo', 'in-progress', 'done']
 export const priorities: Priority[] = ['low', 'medium', 'high']
-
 
 // Add Status to define column for the task
 export const tasks: Task[] = [
